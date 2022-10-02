@@ -1,0 +1,26 @@
+$backgroundColor: #f8f9fa;
+$cardColor: #fff;
+$textColor: #343a40;
+$boxShadowColor: #e9ecef;
+
+.registration-dialog {
+    background-color: $cardColor;
+    margin-top: 0px;
+    box-shadow: none;
+}
+
+.registration-dialog-title {
+    color: $textColor;
+}
+
+.registration-dialog-content {
+    color: $textColor;
+}
+
+::ng-deep .registration-custom>mat-dialog-container {
+    background-color: $cardColor;
+}
+
+.registration-actions {
+    display: flex
+}
