@@ -1,9 +1,10 @@
 // src/app/movie-card/movie-card.component.ts
 import { Component, OnInit } from '@angular/core';
-import { FetchApiDataService } from '../fetch-api-data.service'
+import { UserRegistrationService } from '../fetch-api-data.service';
+
+
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
 
 
 
@@ -18,7 +19,7 @@ export class MovieCardComponent implements OnInit {
 
 
   constructor(
-    public fetchApiData: MovieCardComponent,
+    public fetchApiData: UserRegistrationService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar
   ) {}
@@ -29,10 +30,10 @@ export class MovieCardComponent implements OnInit {
   }
 
 getMovies(): void {
-  this.fetchApiData.getAllMovies().subscribe((resp: any) => {
+    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
       console.log(this.movies);
       return this.movies;
     });
-  }
+}
 }
