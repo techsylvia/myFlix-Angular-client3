@@ -20,6 +20,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ProfileComponent } from './profile/profile.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
+import { DirectorComponent } from './director/director.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     MovieCardComponent,
     WelcomePageComponent,
     ProfileComponent,
-    EditPageComponent
+    EditPageComponent,
+    DirectorComponent
   ],
   imports: [
     BrowserModule,
