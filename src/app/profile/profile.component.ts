@@ -23,6 +23,12 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+   /**
+   * Gets user data from api call and sets the user variable to returned JSON file
+   * @returns object holding user information
+   * @function getUser
+   */
+
   getUser(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
@@ -30,10 +36,20 @@ export class ProfileComponent implements OnInit {
     }
     );          
 } 
+
+ /**
+   * opens the edit profile dialog from EditProfileComponent to allow user to edit their details
+   */
+
 openEditPageDialog(): void {
   this.dialog.open(EditPageComponent, {
     width: '280px'
   });
+    /**
+   * deletes the user profile, redirects to welcome screen
+   * @function deleteUser
+   */
+  
 }deletProfile(): void {
   if(confirm('Are you sure you want to delete your profile?')) {
     this.fetchApiData.deleteUser().subscribe((resp: any) => {
