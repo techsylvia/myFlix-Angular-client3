@@ -9,16 +9,14 @@ import { SynopsisComponent } from '../synopsis/synopsis.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.scss']
+  styleUrls: ['./movie-card.component.scss'],
 })
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
-   favoriteMovies: any[] = [];
-
+  favoriteMovies: any[] = [];
 
   constructor(
     public fetchApiData: UserRegistrationService,
@@ -28,17 +26,16 @@ export class MovieCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
-    
   }
 
-getMovies(): void {
+  getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
       console.log(this.movies);
       return this.movies;
     });
-}
- /**
+  }
+  /**
    * Gets favorite movies from api call and sets the favorite movies variable to return JSON file
    * @returns array holding ids of user's favorite movies
    * @function getFavoriteMovies
@@ -53,18 +50,18 @@ getMovies(): void {
 
   /**
    * checks if a movie is included in the user's list of favorite movies
-   * @param id 
+   * @param id
    * @returns true, if the movie is a favorite move, else false
    */
   isFav(id: string): boolean {
-    return this.favoriteMovies.includes(id)
+    return this.favoriteMovies.includes(id);
   }
 
   /**
-  * opens the user genre dialog from GenreComponent to displaying details
-  * @param name
-  * @param description
-  */
+   * opens the user genre dialog from GenreComponent to displaying details
+   * @param name
+   * @param description
+   */
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreComponent, {
       data: {
@@ -72,27 +69,25 @@ getMovies(): void {
         Description: description,
       },
       // Assign dialog width
-      width: '500px'
+      width: '500px',
     });
   }
 
   /**
-  * opens the user director dialog from DirectorComponent to displaying details
-  * @param name
-  * @param bio
-  * @param birthday
-  */
-  openDirectorDialog(name: string, bio: string, birthday: Date): void {
+   * opens the user director dialog from DirectorComponent to displaying details
+   * @param name
+   * @param bio
+   * @param birthday
+   */
+  openDirectorDialog(name: string, bio: string): void {
     this.dialog.open(DirectorComponent, {
       data: {
         Name: name,
         Bio: bio,
-        Birthday: birthday,
       },
       // Assign dialog width
-      width: '500px'
+      width: '500px',
     });
-
   }
 
   /**
@@ -107,14 +102,13 @@ getMovies(): void {
         Description: description,
       },
       // Assign dialog width
-      width: '500px'
+      width: '500px',
     });
-
   }
 
   /**
    * adds a movie to the list of favorite movies via an API call
-   * @param id 
+   * @param id
    * @function addFavoriteMovie
    */
   addToFavoriteMovies(id: string): void {
@@ -122,12 +116,12 @@ getMovies(): void {
     this.fetchApiData.addFavouriteMovie(id).subscribe((result) => {
       console.log(result);
       this.ngOnInit();
-    })
+    });
   }
 
   /**
    * removes a movie from the list of favorite movies via an API call
-   * @param id 
+   * @param id
    * @function removeFavoriteMovie
    */
   removeFromFavoriteMovies(id: string): void {
@@ -135,7 +129,6 @@ getMovies(): void {
     this.fetchApiData.removeFavoriteMovie(id).subscribe((result) => {
       console.log(result);
       this.ngOnInit();
-    })
+    });
   }
-
 }
