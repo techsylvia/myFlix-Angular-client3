@@ -26,7 +26,14 @@ export class MovieCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
+     this.getFavoriteMovies();
   }
+  
+ /**
+   * Gets movies from api call and sets the movies state to return JSON file
+   * @returns array holding movies objects
+   * @function getAllMovies
+   */
 
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
