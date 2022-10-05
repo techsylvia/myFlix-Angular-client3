@@ -16,4 +16,6 @@ export class SynopsisComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+
 }
