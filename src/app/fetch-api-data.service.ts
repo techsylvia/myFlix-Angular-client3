@@ -91,7 +91,7 @@ return this.http.get(apiUrl + 'users/' + username + '/movies', {
   }
   
 
-  public addFavoriteMovie(id: string): Observable<any> {
+  public addFavouriteMovie(id: string): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
     return this.http
