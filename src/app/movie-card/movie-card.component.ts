@@ -119,7 +119,7 @@ getMovies(): void {
    */
   addToFavoriteMovies(id: string): void {
     console.log(id);
-    this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
+    this.fetchApiData.addFavouriteMovie(id).subscribe((result) => {
       console.log(result);
       this.ngOnInit();
     })
