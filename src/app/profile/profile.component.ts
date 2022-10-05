@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
     }
     );          
 } 
-openEditProfileDialog(): void {
+openEditPageDialog(): void {
   this.dialog.open(EditPageComponent, {
     width: '280px'
   });
