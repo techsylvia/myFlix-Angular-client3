@@ -3,6 +3,9 @@ import { UserRegistrationFormComponent } from './user-registration-form/user-reg
 import { MatDialog } from '@angular/material/dialog';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
+import { GenreComponent } from './genre/genre.component';
+import { ProfileComponent } from './profile/profile.component';
+
 
 
 @Component({
@@ -33,5 +36,19 @@ openUserLoginDialog(): void {
       width: '500px'
     });
   }
+
+
+openGenreDialog(): void {
+  this.dialog.open(GenreComponent, {
+    width: '500px'
+  }); 
+}
+
+
+openProfileDialog(): void {
+  this.dialog.open(ProfileComponent, {
+    width: '500px'  
+  });
+}
 
 }
