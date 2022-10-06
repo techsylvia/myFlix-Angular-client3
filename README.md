@@ -30,7 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Key Features
 
-welcome view where users will be able to either log in or register an
+Welcome view where users will be able to either log in or register an
 account. <br>
 📌 Once authenticated, the user should now view all movies.
 📌 Upon clicking on a particular movie, users will be taken to a single movie view, where
