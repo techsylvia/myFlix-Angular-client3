@@ -1,4 +1,6 @@
-# MyFlixAngularClient3
+![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=MyFlix%20AngularClient&fontSize=90)
+
+## MyFlix Angular Client
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
 
@@ -25,3 +27,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Key Features
+
+welcome view where users will be able to either log in or register an
+account. <br>
+📌 Once authenticated, the user should now view all movies.
+📌 Upon clicking on a particular movie, users will be taken to a single movie view, where
+additional movie details will be displayed. The single movie view will contain the following
+additional features:<br>
+○ A button that when clicked takes a user to the director view, where details about the
+director of that particular movie will be displayed.<br>
+○ A button that when clicked takes a user to the genre view, where details about that
+particular genre of the movie will be displayed.
