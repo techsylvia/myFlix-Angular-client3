@@ -20,7 +20,7 @@ export class MovieCardComponent implements OnInit {
   movies: any[] = [];
   favoriteMovies: any[] = [];
 
-   user: any = localStorage.getItem('user');
+  user: any = localStorage.getItem('user');
   favorites: any[] = JSON.parse(localStorage.getItem('user_favorites') || '[]');
 
   constructor(
@@ -32,10 +32,10 @@ export class MovieCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
-     this.getFavoriteMovies();
+    //  this.getFavoriteMovies();
   }
 
- /**
+  /**
    * Gets movies from api call and sets the movies state to return JSON file
    * @returns array holding movies objects
    * @function getAllMovies
@@ -145,18 +145,18 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-
   /**
-  * This function is used to add a movie to the user's favorites or remove
-  * @function toggleFavorite
-  */
+   * This function is used to add a movie to the user's favorites or remove
+   * @function toggleFavorite
+   */
 
-toggleFavorite(movie: any): void {
+  toggleFavorite(movie: any): void {
+    console.log(movie);
     if (this.favorites.includes(movie)) {
       this.favorites = this.favorites.filter((item) => item !== movie);
       localStorage.setItem('user_favorites', JSON.stringify(this.favorites));
       this.fetchApiData
-        .removeFavoriteMovie(this.user,)
+        .removeFavoriteMovie(movie)
         .subscribe((resp: any) => {
           this.snackBar.open('Movie Removed from Favorites', 'OK', {
             duration: 2000,
@@ -165,7 +165,7 @@ toggleFavorite(movie: any): void {
     } else {
       this.favorites.push(movie);
       localStorage.setItem('user_favorites', JSON.stringify(this.favorites));
-      this.fetchApiData.addFavouriteMovie(this.user).subscribe((resp: any) => {
+      this.fetchApiData.addFavouriteMovie(movie).subscribe((resp: any) => {
         this.snackBar.open('Movie Added to Favorites', 'OK', {
           duration: 2000,
         });

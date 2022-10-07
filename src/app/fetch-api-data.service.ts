@@ -111,13 +111,20 @@ export class UserRegistrationService {
 
   public getUser(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'users', {
+    const username = localStorage.getItem('user');
+
+    const user = this.http.get(apiUrl + `user/${username}`, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + token,
       }),
     }).pipe(map(this.extractResponseData), catchError(this.handleError));
-  }
+  
+    user.subscribe((data) => {
+      localStorage.setItem('user_favorites', data.FavoriteMovies)
+    })
 
+    return user;
+  }
    /**
    * calls API endpoint to get list of favorite movies of this user
    * @returns list of the user's favorite movies in JSON format
@@ -125,7 +132,7 @@ export class UserRegistrationService {
 
 public getFavouriteMovies(): Observable<any> {
     const token  = localStorage.getItem('token');
-const username = localStorage.getItem('Username');
+const username = localStorage.getItem('user');
 return this.http.get(apiUrl + 'user/' + username + '/movies', {
   headers: new HttpHeaders({
     Authorization: 'Bearer ' + token,
@@ -161,7 +168,7 @@ public editUser(updateDetails: any): Observable<any> {
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('user');
   return this.http
-  .put(apiUrl + 'users/' + username, updateDetails, {
+  .put(apiUrl + 'user/' + username, updateDetails, {
     headers: new HttpHeaders({
       Authorization: 'Bearer ' + token,
   }),
@@ -177,7 +184,7 @@ public deleteUser(): Observable<any> {
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('user');
   return this.http
-  .delete(apiUrl + 'users/' + username, {
+  .delete(apiUrl + 'user/' + username, {
     headers: new HttpHeaders({
       Authorization: 'Bearer ' + token,
     }),
@@ -194,7 +201,7 @@ public removeFavoriteMovie(id: string): Observable<any> {
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('user');
   return this.http
-  .delete(apiUrl + 'users/' + username + '/movies/' + id, {
+  .delete(apiUrl + 'user/' + username + '/' + id, {
     headers: new HttpHeaders({
       Authorization: 'Bearer ' + token,
     }),
