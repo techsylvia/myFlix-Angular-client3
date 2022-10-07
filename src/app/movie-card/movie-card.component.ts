@@ -9,6 +9,8 @@ import { SynopsisComponent } from '../synopsis/synopsis.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -18,17 +20,21 @@ export class MovieCardComponent implements OnInit {
   movies: any[] = [];
   favoriteMovies: any[] = [];
 
+   user: any = localStorage.getItem('user');
+  favorites: any[] = JSON.parse(localStorage.getItem('user_favorites') || '[]');
+
   constructor(
     public fetchApiData: UserRegistrationService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
     this.getMovies();
      this.getFavoriteMovies();
   }
-  
+
  /**
    * Gets movies from api call and sets the movies state to return JSON file
    * @returns array holding movies objects
@@ -115,12 +121,12 @@ export class MovieCardComponent implements OnInit {
 
   /**
    * adds a movie to the list of favorite movies via an API call
-   * @param id
+   * @param title
    * @function addFavoriteMovie
    */
-  addToFavoriteMovies(id: string): void {
-    console.log(id);
-    this.fetchApiData.addFavouriteMovie(id).subscribe((result) => {
+  addToFavoriteMovies(title: string): void {
+    console.log(title);
+    this.fetchApiData.addFavouriteMovie(title).subscribe((result) => {
       console.log(result);
       this.ngOnInit();
     });
@@ -137,5 +143,33 @@ export class MovieCardComponent implements OnInit {
       console.log(result);
       this.ngOnInit();
     });
+  }
+
+
+  /**
+  * This function is used to add a movie to the user's favorites or remove
+  * @function toggleFavorite
+  */
+
+toggleFavorite(movie: any): void {
+    if (this.favorites.includes(movie)) {
+      this.favorites = this.favorites.filter((item) => item !== movie);
+      localStorage.setItem('user_favorites', JSON.stringify(this.favorites));
+      this.fetchApiData
+        .removeFavoriteMovie(this.user,)
+        .subscribe((resp: any) => {
+          this.snackBar.open('Movie Removed from Favorites', 'OK', {
+            duration: 2000,
+          });
+        });
+    } else {
+      this.favorites.push(movie);
+      localStorage.setItem('user_favorites', JSON.stringify(this.favorites));
+      this.fetchApiData.addFavouriteMovie(this.user).subscribe((resp: any) => {
+        this.snackBar.open('Movie Added to Favorites', 'OK', {
+          duration: 2000,
+        });
+      });
+    }
   }
 }
