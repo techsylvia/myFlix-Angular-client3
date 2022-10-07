@@ -40,3 +40,12 @@ additional features:<br>
 director of that particular movie will be displayed.<br>
 ○ A button that when clicked takes a user to the genre view, where details about that
 particular genre of the movie will be displayed.
+
+## Technology 
+✨ Angular
+✨ Node.js
+✨ Angular Material
+✨ Typedoc 
+
+<img width="858" alt="Screenshot 2022-10-07 at 20 56 09" src="https://user-images.githubusercontent.com/67543909/194633184-98f80e76-3dcf-4099-84a5-a5d470061915.png">
+
