@@ -31,15 +31,19 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Key Features
 
 Welcome view where users will be able to either log in or register an
-account. <br>
-📌 Once authenticated, the user should now view all movies.<br>
-📌 Upon clicking on a particular movie, users will be taken to a single movie view, where
-additional movie details will be displayed. The single movie view will contain the following
-additional features:<br>
-○ A button that when clicked takes a user to the director view, where details about the
-director of that particular movie will be displayed.<br>
-○ A button that when clicked takes a user to the genre view, where details about that
-particular genre of the movie will be displayed.
+account. <br> 
+
+  📌 Once authenticated, the user should now view all movies.<br>
+  
+  📌 Upon clicking on a particular movie, users will be taken to a single movie view, where
+     additional movie details will be displayed. The single movie view will contain the following
+     additional features:<br>
+     
+  ○ A button that when clicked takes a user to the director view, where details about the
+    director of that particular movie will be displayed.<br>
+    
+  ○ A button that when clicked takes a user to the genre view, where details about that
+    particular genre of the movie will be displayed.
 
 ## Technology 
 ✨ Angular
